@@ -1,0 +1,15 @@
+# Verified direct dependency pins for the v1.0.0 project and CI environment.
+# Transitive compatibility is checked with `python -m pip check` in CI.
+pip==26.2.1
+setuptools==84.0.0
+wheel==0.48.0
+accelerate==1.15.0
+fastapi==0.143.0
+httpx==0.28.1
+jsonschema==4.26.0
+Pillow==12.3.0
+python-multipart==0.0.32
+pytest==9.1.1
+torch==2.14.1
+transformers==5.19.0
+uvicorn==0.54.0
