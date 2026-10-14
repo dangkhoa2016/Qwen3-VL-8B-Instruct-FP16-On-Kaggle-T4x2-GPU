@@ -1,0 +1,367 @@
+[
+  {
+    "case_id": "vision-office-rich-01",
+    "group": "general_vision",
+    "asset": "examples/realistic/cozy_daylight_workspace_with_city_views.jpg",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer in at most 120 words. Name the major visible objects (including desk, laptop, mug, notebook, pen, plant, window, and clock), state the key left/right or front/back relationships among them, and give exactly one detail you are uncertain about. Do not spend words describing the illustration style.",
+    "expected": {
+      "must_notice": [
+        "desk",
+        "laptop",
+        "mug",
+        "notebook",
+        "pen",
+        "plant",
+        "window",
+        "clock"
+      ],
+      "relations": [
+        "mug left of laptop",
+        "notebook right of laptop",
+        "plant behind/right of desk"
+      ]
+    }
+  },
+  {
+    "case_id": "vision-market-photorealistic-01",
+    "group": "general_vision",
+    "asset": "examples/realistic/bustling_waterfront_produce_market.jpg",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer in at most 120 words. Describe the market setting, name at least five visible produce categories, explain where the boats/water are relative to the stalls, mention visible transport, and transcribe at least two readable price signs without guessing identities.",
+    "expected": {
+      "scene": "busy waterfront produce market",
+      "must_notice": [
+        "produce stalls",
+        "shoppers/vendors",
+        "boats/water",
+        "motorbikes"
+      ],
+      "readable_signs": "at least two of: Dưa leo 15K, Thơm 20K, Xoài 25K"
+    }
+  },
+  {
+    "case_id": "vision-parking-spatial-01",
+    "group": "general_vision",
+    "asset": "examples/vision/vision-synthetic-parking-spatial.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer three items clearly: (1) Which labeled cars are in the upper row? (2) Across the entire image, which labeled car has the greatest horizontal x-position (is farthest right overall)? (3) Where are the cones relative to the central road?",
+    "expected": {
+      "upper_row": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightmost": "E",
+      "cones": "near the center road"
+    }
+  },
+  {
+    "case_id": "vision-cafe-relations-01",
+    "group": "general_vision",
+    "asset": "examples/vision/vision-synthetic-cafe-relations.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly four concise bullets: (1) map people to T1/T2/T3; (2) relationship of the blue bag to T1; (3) relationship of the laptop to T2; (4) relationship of the dog and T3 to the ORDER counter. Mention all labels T1, T2, T3, BAG, laptop, dog, and ORDER.",
+    "expected": {
+      "must_notice": [
+        "T1",
+        "T2",
+        "T3",
+        "blue bag",
+        "laptop",
+        "dog",
+        "ORDER counter"
+      ]
+    }
+  },
+  {
+    "case_id": "invoice-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/realistic/northstar_office_supply_invoice.jpg",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "invoice_number": "string",
+      "date": "string",
+      "vendor": "string",
+      "reference": "string",
+      "items": [
+        {
+          "name": "string",
+          "quantity": "number",
+          "unit_price": "number",
+          "line_total": "number"
+        }
+      ],
+      "subtotal": "number",
+      "tax": "number",
+      "total": "number",
+      "bill_to_name": "string"
+    },
+    "expected": {
+      "invoice_number": "INV-2026-1042",
+      "date": "2026-10-09",
+      "vendor": "Northstar Office Supply",
+      "reference": "PO-RSA-8841",
+      "subtotal": 866.0,
+      "tax": 69.28,
+      "total": 935.28,
+      "bill_to_name": "Riverstone Analytics Ltd."
+    }
+  },
+  {
+    "case_id": "receipt-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/realistic/sunrise_market_receipt_and_groceries.jpg",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "merchant": "string",
+      "date": "string",
+      "time": "string",
+      "receipt_number": "string",
+      "items": [
+        {
+          "name": "string",
+          "quantity": "number",
+          "unit_price": "number",
+          "line_total": "number"
+        }
+      ],
+      "subtotal": "number",
+      "tax": "number",
+      "total": "number",
+      "payment_method": "string",
+      "cashier": "string"
+    },
+    "expected": {
+      "merchant": "Sunrise Market",
+      "date": "2026-10-11",
+      "time": "18:42",
+      "receipt_number": "SM-77192",
+      "subtotal": 29.6,
+      "tax": 2.37,
+      "total": 31.97,
+      "payment_method": "VISA",
+      "cashier": "Linh"
+    }
+  },
+  {
+    "case_id": "business-card-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/realistic/warm_desk_still_life_with_business_card.jpg",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "name": "string",
+      "title": "string",
+      "company": "string",
+      "email": "string",
+      "phone": "string",
+      "website": "string",
+      "address": "string"
+    },
+    "expected": {
+      "name": "Maya Chen",
+      "title": "Director of Applied AI",
+      "company": "Orbital Data Labs",
+      "email": "maya.chen@orbitaldata.example",
+      "phone": "+1 415 555 0188",
+      "website": "www.orbitaldata.example",
+      "address": "245 Mission Street, San Francisco, CA 94105"
+    }
+  },
+  {
+    "case_id": "form-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/forms/form-01-service-request.png",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "request_id": "string",
+      "submitted_by": "string",
+      "department": "string",
+      "equipment": "string",
+      "asset_tag": "string",
+      "priority": "string",
+      "requested_date": "string",
+      "problem_description": "string",
+      "preferred_service_window": "string"
+    },
+    "expected": {
+      "request_id": "SR-20418",
+      "submitted_by": "Anita Patel",
+      "department": "Operations",
+      "equipment": "Laser Printer LP-320",
+      "asset_tag": "OPS-PR-044",
+      "priority": "High",
+      "requested_date": "2026-10-12",
+      "preferred_service_window": "2026-10-14, 09:00–12:00"
+    }
+  },
+  {
+    "case_id": "document-transit-qa-01",
+    "group": "ocr_document",
+    "asset": "examples/documents/document-01-transit-notice.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly five concise bullets: (1) what is changing; (2) effective dates; (3) stops Route 24 will not serve; (4) alternative for Central Library passengers including distance/direction; (5) date normal service is expected to resume.",
+    "expected": {
+      "dates": "17–19 October 2026",
+      "not_served": [
+        "Central Library",
+        "Pine Street"
+      ],
+      "alternative": "temporary stop on Oak Avenue about 180 metres east",
+      "resume": "20 October 2026"
+    }
+  },
+  {
+    "case_id": "document-warehouse-qa-01",
+    "group": "ocr_document",
+    "asset": "examples/documents/document-02-warehouse-summary.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly three concise bullets: (1) the operational disruption stated in Key notes, including dock number and closure time; (2) the zone below plan and its numeric variance; (3) the supervisor action for tomorrow.",
+    "expected": {
+      "dock_issue": "Dock 3 closed 14:00–15:30",
+      "below_plan": "South",
+      "variance": -5,
+      "action": "Prioritize the South zone backlog during the first shift tomorrow"
+    }
+  },
+  {
+    "case_id": "table-sales-01",
+    "group": "tables_charts",
+    "asset": "examples/tables/table-01-quarterly-sales.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly two concise bullets: (1) region with the highest Q4 value, including the number; (2) region with the largest Q1-to-Q4 increase, showing Q4 - Q1 arithmetic.",
+    "expected": {
+      "highest_q4": {
+        "region": "North",
+        "value": 162
+      },
+      "largest_increase": {
+        "region": "North",
+        "difference": 42
+      }
+    }
+  },
+  {
+    "case_id": "table-delivery-01",
+    "group": "tables_charts",
+    "asset": "examples/tables/table-02-delivery-performance.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly three concise bullets with the relevant numbers: (1) carrier with best on-time percentage; (2) carrier with highest shipment volume; (3) least reliable carrier when on-time %, average delay and claims are considered together.",
+    "expected": {
+      "best_ontime": "Cobalt",
+      "highest_volume": "Cobalt",
+      "least_reliable": "BlueJet"
+    }
+  },
+  {
+    "case_id": "chart-tickets-01",
+    "group": "tables_charts",
+    "asset": "examples/charts/chart-01-support-tickets-bar.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly two concise bullets: (1) month with the highest ticket count and the value; (2) largest month-to-month increase, showing the two month values and arithmetic difference.",
+    "expected": {
+      "highest": {
+        "month": "May",
+        "value": 117
+      },
+      "largest_increase": {
+        "from": "Mar",
+        "to": "Apr",
+        "difference": 16
+      }
+    }
+  },
+  {
+    "case_id": "chart-satisfaction-01",
+    "group": "tables_charts",
+    "asset": "examples/charts/chart-02-satisfaction-lines.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Read the numeric labels on the line chart and answer with arithmetic: (1) which product finishes higher at W8 and by how many points? (2) how many points did Product A increase from W4 to W8?",
+    "expected": {
+      "higher_at_w8": "Product A",
+      "w8_difference": 13,
+      "product_a_w4_to_w8_increase": 17
+    }
+  },
+  {
+    "case_id": "vi-delivery-extract-01",
+    "group": "multilingual",
+    "asset": "examples/multilingual/multilingual-01-vietnamese-delivery-note.png",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "ma_phieu": "string",
+      "ngay": "string",
+      "khach_hang": "string",
+      "dia_chi_giao": "string",
+      "tong_cong": "string",
+      "ghi_chu": "string"
+    },
+    "expected": {
+      "ma_phieu": "GH-260913",
+      "ngay": "13/10/2026",
+      "khach_hang": "Công ty An Phúc",
+      "dia_chi_giao": "18 Nguyễn Trãi, Nha Trang",
+      "tong_cong": "3.045.000 đ",
+      "ghi_chu": "Giao trước 16:00, kiểm tra đủ số lượng khi nhận."
+    }
+  },
+  {
+    "case_id": "mixed-workshop-qa-01",
+    "group": "multilingual",
+    "asset": "examples/realistic/bilingual_multimodal_ai_workshop_poster.jpg",
+    "endpoint": "/v1/vision",
+    "prompt": "Trả lời bằng tiếng Việt: hội thảo nói về chủ đề gì, diễn ra khi nào, ở đâu, ai là diễn giả và hạn đăng ký là ngày nào?",
+    "expected": {
+      "topic": "Practical Multimodal AI / AI đa phương thức thực tiễn",
+      "date": "18 October 2026",
+      "time": "09:30–11:30",
+      "venue": "Room B204 / Phòng B204",
+      "speaker": "Dr. Lan Nguyễn — Vision Systems Lead",
+      "deadline": "16 October 2026"
+    }
+  },
+  {
+    "case_id": "vi-notice-en-question-01",
+    "group": "multilingual",
+    "asset": "examples/multilingual/multilingual-03-vietnamese-maintenance-notice.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer in English: when is the maintenance window, what actions are unavailable, and what remains available?",
+    "expected": {
+      "window": "22:00 2026-10-15 to 01:30 2026-10-16",
+      "unavailable": "create or edit new orders",
+      "available": "view previously downloaded reports"
+    }
+  },
+  {
+    "case_id": "invoice-understanding-01",
+    "group": "ocr_document",
+    "asset": "examples/realistic/northstar_office_supply_invoice.jpg",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly five short bullets: document type; supplier and customer; the three purchased items; subtotal/tax/total; and arithmetic verification as subtotal + tax = total. No extra explanation.",
+    "expected": {
+      "document_type": "invoice",
+      "vendor": "Northstar Office Supply",
+      "customer": "Riverstone Analytics Ltd.",
+      "items": [
+        "Ergonomic keyboard",
+        "USB-C dock",
+        "27-inch monitor"
+      ],
+      "arithmetic": "866.00 + 69.28 = 935.28"
+    }
+  },
+  {
+    "case_id": "receipt-understanding-01",
+    "group": "ocr_document",
+    "asset": "examples/realistic/sunrise_market_receipt_and_groceries.jpg",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer exactly five short bullets: document type; merchant; payment method; most expensive line item by line total; and total verification as subtotal + tax = total.",
+    "expected": {
+      "document_type": "receipt",
+      "merchant": "Sunrise Market",
+      "payment_method": "VISA",
+      "most_expensive_line_item": "Arabica coffee 500g",
+      "total": "31.97"
+    }
+  }
+]
