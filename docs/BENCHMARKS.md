@@ -16,30 +16,30 @@ The numbers below are **development evidence from the current Kaggle T4 x2 imple
 
 Observed placement put the visual module, embeddings and language layers 0-13 on GPU 0; layers 14-35 plus final language components and `lm_head` were on GPU 1.
 
-## Curated 18-case showcase campaign
+## Photorealistic 19-case showcase campaign
 
-The current default local catalog contains 18 runnable cases across five capability groups:
+The current self-contained release catalog contains 19 runnable cases across five capability groups:
 
 | Capability | Cases |
 |---|---:|
-| General vision | 3 |
+| General vision | 4 |
 | Structured extraction | 4 |
 | OCR/document understanding | 4 |
 | Tables/charts | 4 |
 | Multilingual | 3 |
-| **Total** | **18** |
+| **Total** | **19** |
 
-One multilingual case also uses `/v1/extract`, so there are **5 structured endpoint cases** in the campaign.
+One multilingual case also uses `/v1/extract`, so there are **5 structured endpoint cases** in the campaign. Six reviewer-facing inputs are AI-generated photorealistic assets (office, waterfront produce market, invoice, receipt, business card and bilingual workshop poster); no third-party web photograph is required.
 
-Final development-session result for the current catalog/prompt set:
+Final development-session result for the current asset/catalog/prompt set:
 
-- runtime success: **18/18**;
+- runtime success: **19/19**;
 - JSON parse rate across 5 structured endpoint cases: **100%**;
 - schema validation rate: **100%**;
 - expected-field semantic checks: **5/5 PASS** after deliberately narrow text normalization (`NFKC`, whitespace collapse, typographic-dash equivalence only);
-- free-form cases: **13/13 manually reviewed for the expected facts** in this development session; free-form answers are still not auto-labeled semantic PASS by the evidence engine.
+- free-form cases: **14/14 manually reviewed for the expected facts** in this development session; free-form answers are still not auto-labeled semantic PASS by the evidence engine.
 
-Per-case wall latency for this campaign (not cumulative server metrics): **22,628 ms median**, **7,194 ms minimum**, **54,439 ms maximum**. This is a deep showcase campaign, not a throughput benchmark.
+Per-case wall latency for this campaign (not cumulative server metrics): **13,822 ms median**, **5,356 ms minimum**, **32,115 ms maximum**. This is a deep showcase campaign, not a throughput benchmark.
 
 ## 12-request service stability campaign
 

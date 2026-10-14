@@ -4,19 +4,19 @@ Các số dưới đây là **development evidence trên Kaggle T4 x2 ngày 2026
 
 Runtime đã xác nhận: `Qwen3VLForConditionalGeneration`, `torch.float16`, SDPA, Tesla T4 x2, balanced device map, không CPU/disk offload.
 
-## Curated showcase 18 case
+## Photorealistic showcase 19 case
 
-Catalog local mặc định hiện có **18 case**: 3 general vision, 4 structured extraction, 4 OCR/document, 4 table/chart và 3 multilingual. Một case multilingual cũng gọi `/v1/extract`, nên tổng số structured endpoint case là **5**.
+Catalog release hiện tại hoàn toàn self-contained với **19 case**: 4 general vision, 4 structured extraction, 4 OCR/document, 4 table/chart và 3 multilingual. Một case multilingual cũng gọi `/v1/extract`, nên tổng số structured endpoint case là **5**. Sáu input reviewer-facing là ảnh photorealistic do AI tạo riêng cho dự án: office, waterfront produce market, invoice, receipt, business card và poster EN/VI; release không cần ảnh web bên thứ ba.
 
-Final development campaign của đúng catalog/prompt hiện tại đạt:
+Final development campaign của đúng asset/catalog/prompt hiện tại đạt:
 
-- runtime **18/18 PASS**;
+- runtime **19/19 PASS**;
 - JSON parse **100%** trên 5 structured endpoint case;
 - schema validation **100%**;
 - expected-field checks **5/5 PASS** sau normalization rất hẹp (NFKC + collapse whitespace + tương đương dash typography);
-- **13/13 free-form case đã được manual review** và chứa các expected facts; evidence engine vẫn không tự gắn semantic PASS cho free-form chỉ vì HTTP 200.
+- **14/14 free-form case đã được manual review** và chứa các expected facts; evidence engine vẫn không tự gắn semantic PASS cho free-form chỉ vì HTTP 200.
 
-Wall latency theo từng record của campaign này: median **22,628 ms**, min **7,194 ms**, max **54,439 ms**. Đây là deep showcase, không phải throughput benchmark.
+Wall latency theo từng record của campaign này: median **13,822 ms**, min **5,356 ms**, max **32,115 ms**. Đây là deep showcase, không phải throughput benchmark.
 
 ## Curation minh bạch
 

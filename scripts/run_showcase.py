@@ -15,11 +15,9 @@ sys.path.insert(0, str(ROOT / "src"))
 from qwen3vl_t4x2.evidence import evaluate_case, summarize_records
 
 
-def select_cases(cases, case_ids, groups, max_cases, include_external):
+def select_cases(cases, case_ids, groups, max_cases):
     selected = []
     for case in cases:
-        if case.get("requires_fetch") and not include_external:
-            continue
         if case_ids and case.get("case_id") not in case_ids:
             continue
         if groups and case.get("group") not in groups:
@@ -66,12 +64,11 @@ def main() -> None:
     parser.add_argument("--case-id", action="append", default=[])
     parser.add_argument("--group", action="append", default=[])
     parser.add_argument("--max-cases", type=int, default=0)
-    parser.add_argument("--include-external", action="store_true")
     parser.add_argument("--output-dir", default=str(ROOT / "results"))
     args = parser.parse_args()
 
     cases = json.loads((ROOT / "ground_truth" / "cases.json").read_text(encoding="utf-8"))
-    selected = select_cases(cases, set(args.case_id), set(args.group), args.max_cases, args.include_external)
+    selected = select_cases(cases, set(args.case_id), set(args.group), args.max_cases)
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     jsonl_path = output_dir / "showcase-results.jsonl"

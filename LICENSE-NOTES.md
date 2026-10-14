@@ -15,4 +15,10 @@ The local Kaggle mirror is only a transport/attachment used for inference. Upstr
 
 ## Assets
 
-Repository-generated synthetic benchmark assets are distributed with the project to the extent the repository owner has rights to license them. AI-generated photorealistic benchmark assets, once promoted into the repository, must be recorded as generated specifically for this project with no third-party source. Optional third-party/public-domain assets, when used, retain their own provenance and license notes in `LICENSE-SOURCES.md` and `EXTERNAL-ASSETS.json`.
+All image assets required by the release showcase are project-generated; no third-party web photograph is required.
+
+- Six photorealistic JPEG assets in `examples/realistic/` were generated specifically for this project using OpenAI image generation and resized to 1024×768.
+- Remaining benchmark images were generated programmatically from fictional data for controlled evaluation.
+- Asset hashes and generation class are recorded in `ASSET_MANIFEST.json`.
+
+See `LICENSE-SOURCES.md` for the release asset policy and provenance summary.

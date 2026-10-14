@@ -2,7 +2,7 @@
   {
     "case_id": "vision-office-rich-01",
     "group": "general_vision",
-    "asset": "examples/vision/vision-synthetic-office-rich.png",
+    "asset": "examples/realistic/cozy_daylight_workspace_with_city_views.jpg",
     "endpoint": "/v1/vision",
     "prompt": "Answer in at most 120 words. Name the major visible objects (including desk, laptop, mug, notebook, pen, plant, window, and clock), state the key left/right or front/back relationships among them, and give exactly one detail you are uncertain about. Do not spend words describing the illustration style.",
     "expected": {
@@ -21,6 +21,23 @@
         "notebook right of laptop",
         "plant behind/right of desk"
       ]
+    }
+  },
+  {
+    "case_id": "vision-market-photorealistic-01",
+    "group": "general_vision",
+    "asset": "examples/realistic/bustling_waterfront_produce_market.jpg",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer in at most 120 words. Describe the market setting, name at least five visible produce categories, explain where the boats/water are relative to the stalls, mention visible transport, and transcribe at least two readable price signs without guessing identities.",
+    "expected": {
+      "scene": "busy waterfront produce market",
+      "must_notice": [
+        "produce stalls",
+        "shoppers/vendors",
+        "boats/water",
+        "motorbikes"
+      ],
+      "readable_signs": "at least two of: Dưa leo 15K, Thơm 20K, Xoài 25K"
     }
   },
   {
@@ -60,13 +77,12 @@
   {
     "case_id": "invoice-extract-01",
     "group": "structured_extraction",
-    "asset": "examples/invoices/invoice-01-northstar.png",
+    "asset": "examples/realistic/northstar_office_supply_invoice.jpg",
     "endpoint": "/v1/extract",
     "schema": {
       "invoice_number": "string",
       "date": "string",
       "vendor": "string",
-      "bill_to": "string",
       "reference": "string",
       "items": [
         {
@@ -78,23 +94,24 @@
       ],
       "subtotal": "number",
       "tax": "number",
-      "total": "number"
+      "total": "number",
+      "bill_to_name": "string"
     },
     "expected": {
       "invoice_number": "INV-2026-1042",
       "date": "2026-10-09",
-      "vendor": "NORTHSTAR OFFICE SUPPLY",
-      "bill_to": "Riverstone Analytics Ltd.",
+      "vendor": "Northstar Office Supply",
       "reference": "PO-RSA-8841",
       "subtotal": 866.0,
       "tax": 69.28,
-      "total": 935.28
+      "total": 935.28,
+      "bill_to_name": "Riverstone Analytics Ltd."
     }
   },
   {
     "case_id": "receipt-extract-01",
     "group": "structured_extraction",
-    "asset": "examples/receipts/receipt-01-sunrise-market.png",
+    "asset": "examples/realistic/sunrise_market_receipt_and_groceries.jpg",
     "endpoint": "/v1/extract",
     "schema": {
       "merchant": "string",
@@ -116,21 +133,21 @@
       "cashier": "string"
     },
     "expected": {
-      "merchant": "SUNRISE MARKET",
+      "merchant": "Sunrise Market",
       "date": "2026-10-11",
       "time": "18:42",
       "receipt_number": "SM-77192",
       "subtotal": 29.6,
       "tax": 2.37,
       "total": 31.97,
-      "payment_method": "VISA •••• 4242",
+      "payment_method": "VISA",
       "cashier": "Linh"
     }
   },
   {
     "case_id": "business-card-extract-01",
     "group": "structured_extraction",
-    "asset": "examples/business-cards/business-card-01-orbital.png",
+    "asset": "examples/realistic/warm_desk_still_life_with_business_card.jpg",
     "endpoint": "/v1/extract",
     "schema": {
       "name": "string",
@@ -144,7 +161,7 @@
     "expected": {
       "name": "Maya Chen",
       "title": "Director of Applied AI",
-      "company": "ORBITAL DATA LABS",
+      "company": "Orbital Data Labs",
       "email": "maya.chen@orbitaldata.example",
       "phone": "+1 415 555 0188",
       "website": "www.orbitaldata.example",
@@ -291,7 +308,7 @@
   {
     "case_id": "mixed-workshop-qa-01",
     "group": "multilingual",
-    "asset": "examples/multilingual/multilingual-02-en-vi-workshop.png",
+    "asset": "examples/realistic/bilingual_multimodal_ai_workshop_poster.jpg",
     "endpoint": "/v1/vision",
     "prompt": "Trả lời bằng tiếng Việt: hội thảo nói về chủ đề gì, diễn ra khi nào, ở đâu, ai là diễn giả và hạn đăng ký là ngày nào?",
     "expected": {
@@ -318,12 +335,12 @@
   {
     "case_id": "invoice-understanding-01",
     "group": "ocr_document",
-    "asset": "examples/invoices/invoice-01-northstar.png",
+    "asset": "examples/realistic/northstar_office_supply_invoice.jpg",
     "endpoint": "/v1/vision",
-    "prompt": "Identify the document type, explain who is billing whom, list the three purchased items, and verify whether subtotal plus tax equals the total.",
+    "prompt": "Answer exactly five short bullets: document type; supplier and customer; the three purchased items; subtotal/tax/total; and arithmetic verification as subtotal + tax = total. No extra explanation.",
     "expected": {
       "document_type": "invoice",
-      "vendor": "NORTHSTAR OFFICE SUPPLY",
+      "vendor": "Northstar Office Supply",
       "customer": "Riverstone Analytics Ltd.",
       "items": [
         "Ergonomic keyboard",
@@ -336,52 +353,15 @@
   {
     "case_id": "receipt-understanding-01",
     "group": "ocr_document",
-    "asset": "examples/receipts/receipt-01-sunrise-market.png",
+    "asset": "examples/realistic/sunrise_market_receipt_and_groceries.jpg",
     "endpoint": "/v1/vision",
     "prompt": "Answer exactly five short bullets: document type; merchant; payment method; most expensive line item by line total; and total verification as subtotal + tax = total.",
     "expected": {
       "document_type": "receipt",
-      "merchant": "SUNRISE MARKET",
-      "payment_method": "VISA •••• 4242",
+      "merchant": "Sunrise Market",
+      "payment_method": "VISA",
       "most_expensive_line_item": "Arabica coffee 500g",
       "total": "31.97"
-    }
-  },
-  {
-    "case_id": "vision-real-kitchen-01",
-    "group": "general_vision",
-    "asset": "examples/vision/vision-real-kitchen-table-public-domain.jpg",
-    "endpoint": "/v1/vision",
-    "requires_fetch": true,
-    "prompt": "Describe the room and furniture. Count the clearly visible wooden dining chairs around the table, and distinguish them from the dark padded chair.",
-    "expected": {
-      "scene": "indoor dining/kitchen area with a wooden table by a window",
-      "wooden_dining_chairs": "multiple; reviewer should verify exact count against fetched source",
-      "dark_padded_chair": "separate chair to the left"
-    }
-  },
-  {
-    "case_id": "vision-real-hanoi-market-01",
-    "group": "general_vision",
-    "asset": "examples/vision/vision-real-hanoi-street-market-cc0.jpg",
-    "endpoint": "/v1/vision",
-    "requires_fetch": true,
-    "prompt": "Describe the street-market scene, identify visible people and market activity, and mention any culturally distinctive visible clothing or headwear without guessing identities.",
-    "expected": {
-      "scene": "street market in Hanoi, Vietnam",
-      "validation": "qualitative reviewer check; do not infer identities"
-    }
-  },
-  {
-    "case_id": "vision-real-urban-market-01",
-    "group": "general_vision_optional",
-    "asset": "examples/vision/vision-real-urban-market-public-domain.jpg",
-    "endpoint": "/v1/vision",
-    "requires_fetch": true,
-    "prompt": "Describe the pedestrian market scene and explain the spatial relationship among the walking people, vendor display, buildings and vegetation.",
-    "expected": {
-      "scene": "outdoor pedestrian market/street scene",
-      "validation": "qualitative reviewer check"
     }
   }
 ]

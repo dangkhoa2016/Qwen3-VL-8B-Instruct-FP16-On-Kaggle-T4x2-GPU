@@ -121,14 +121,14 @@ Completed and locally verified on Kaggle T4 x2:
 - [x] localhost/public-host authentication boundary and tunnel fail-closed policy;
 - [x] metrics with internally consistent snapshots;
 - [x] machine-readable evidence runner and independent verifier;
-- [x] curated 18-case development showcase: 18/18 runtime PASS, 5/5 structured expected-field PASS, 13/13 free-form cases manually reviewed;
+- [x] photorealistic release catalog: 19/19 runtime PASS, 5/5 structured expected-field PASS, 14/14 free-form cases manually reviewed;
 - [x] 12-request sequential service stability: 12/12 PASS, zero allocated-memory growth on both GPUs;
 - [x] production-showcase notebook with one inference campaign and evidence rendering by capability;
 - [x] EN/VI architecture/API/Kaggle/security/benchmark documentation and GitHub CI/governance skeleton.
 
 Remaining before public v1.0.0:
 
-- [ ] promote the selected photorealistic AI-generated assets into the repository/Kaggle workspace and update the manifest/cases;
+- [x] promote the selected photorealistic AI-generated assets into the repository/Kaggle workspace and update the manifest/cases;
 - [ ] execute the final production-showcase notebook on the official Kaggle account and review every free-form semantic result;
 - [ ] promote reviewed official evidence to `benchmarks/official/`;
 - [x] verify the authoritative upstream Qwen3-VL model license and finalize attribution wording (Apache-2.0 upstream; verified 2026-10-14);

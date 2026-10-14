@@ -17,7 +17,7 @@ for a in manifest["generated_assets"]:
 cases=json.loads((root/"ground_truth/cases.json").read_text())
 for c in cases:
     p=root/c["asset"]
-    if not p.exists() and not c.get("requires_fetch",False):
+    if not p.exists():
         errors.append(f"CASE ASSET MISSING: {c['case_id']} -> {c['asset']}")
 
 if errors:

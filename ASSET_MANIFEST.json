@@ -1,12 +1,13 @@
 {
   "pack_name": "qwen3vl-kaggle-t4x2-showcase-assets",
-  "version": "0.1",
-  "generated_asset_count": 17,
-  "case_count": 21,
+  "version": "0.2",
+  "generated_asset_count": 23,
+  "case_count": 19,
   "generated_assets": [
     {
       "path": "examples/business-cards/business-card-01-orbital.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 900,
       "sha256": "f159be4c2ffef6c2c3d64826eb73ed1dfa52b55867c98746dce1fe72c6cd0abd"
@@ -14,6 +15,7 @@
     {
       "path": "examples/charts/chart-01-support-tickets-bar.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1530,
       "height": 947,
       "sha256": "7952ef17667fa64f583c0c99d25d9feeb37617b00909b4d58046d567e2725a8e"
@@ -21,6 +23,7 @@
     {
       "path": "examples/charts/chart-02-satisfaction-lines.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1653,
       "height": 947,
       "sha256": "e04dce6177c5f0c6ee5104f05c0c5f339fdded56bbf303afa85ec4b03c8d8b8d"
@@ -28,6 +31,7 @@
     {
       "path": "examples/charts/chart-03-planned-vs-actual.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1669,
       "height": 947,
       "sha256": "99cb8fe04dd387d977d9f13bbea1e560496497b8df7e64ae2effd3378e1ed2e6"
@@ -35,6 +39,7 @@
     {
       "path": "examples/documents/document-01-transit-notice.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "914c1fb1ca9fb62b9572fad39acbe6f29c04cdcb884cfb037e99c229591df043"
@@ -42,6 +47,7 @@
     {
       "path": "examples/documents/document-02-warehouse-summary.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "258ff8be2b241819e027ab5ed8d4d64ad13daa4a807db693b45614bb35dc2637"
@@ -49,6 +55,7 @@
     {
       "path": "examples/forms/form-01-service-request.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "f8c06b690995078a5ec6d7d29c7380affccf4d894451e275f867bdf2e800a887"
@@ -56,6 +63,7 @@
     {
       "path": "examples/invoices/invoice-01-northstar.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "d6021b6d39ea0dba82729032f2a8dd685fc6ec023b7048b42d935f6025f1ad48"
@@ -63,6 +71,7 @@
     {
       "path": "examples/multilingual/multilingual-01-vietnamese-delivery-note.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "14211dca6b488f1737fb99f677ddde0a7eecdbd9081ba64608fc7fd734ad1f6c"
@@ -70,6 +79,7 @@
     {
       "path": "examples/multilingual/multilingual-02-en-vi-workshop.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "ed3ffda3bb28791ea40763b7a8e6f3e2b6e64f8fe868f985f3d962ae19c2def5"
@@ -77,13 +87,63 @@
     {
       "path": "examples/multilingual/multilingual-03-vietnamese-maintenance-notice.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "27b92811d82edcf0b0f9fd4f0aab32dd29a444f2c8a8a8687c225ba71f1d8306"
     },
     {
+      "path": "examples/realistic/bilingual_multimodal_ai_workshop_poster.jpg",
+      "synthetic": true,
+      "generation": "ai-generated",
+      "width": 1024,
+      "height": 768,
+      "sha256": "67e049159185c6c7a3c84173fe5d5df8c1a89ddadaf015a217e1649695b03f7b"
+    },
+    {
+      "path": "examples/realistic/bustling_waterfront_produce_market.jpg",
+      "synthetic": true,
+      "generation": "ai-generated",
+      "width": 1024,
+      "height": 768,
+      "sha256": "cf2982b3082cbbe1b0a63805d77c63d626693d0e7467eb870b6a1b6405fd916c"
+    },
+    {
+      "path": "examples/realistic/cozy_daylight_workspace_with_city_views.jpg",
+      "synthetic": true,
+      "generation": "ai-generated",
+      "width": 1024,
+      "height": 768,
+      "sha256": "134410a37ecf5ffe6aad73fd24dd17f9ae2f455605ca0e801198fe2e92ecd48e"
+    },
+    {
+      "path": "examples/realistic/northstar_office_supply_invoice.jpg",
+      "synthetic": true,
+      "generation": "ai-generated",
+      "width": 1024,
+      "height": 768,
+      "sha256": "ba91d31a9c4242ed127bf6ff8af0bff467b9d254f713f995934bdd86bb50c5c9"
+    },
+    {
+      "path": "examples/realistic/sunrise_market_receipt_and_groceries.jpg",
+      "synthetic": true,
+      "generation": "ai-generated",
+      "width": 1024,
+      "height": 768,
+      "sha256": "5f088194fbb8ef0f7082c02d583f0684583367712437c5644a3fe21b16fe8b5c"
+    },
+    {
+      "path": "examples/realistic/warm_desk_still_life_with_business_card.jpg",
+      "synthetic": true,
+      "generation": "ai-generated",
+      "width": 1024,
+      "height": 768,
+      "sha256": "000de08a043dcbaa52265581a81a5bdfcf056150edc01d084b9a817446abac6d"
+    },
+    {
       "path": "examples/receipts/receipt-01-sunrise-market.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "8f2ef855faacc7fa5afc82c5fbba03568b597c054ebf23b5065ce484d234d53a"
@@ -91,6 +151,7 @@
     {
       "path": "examples/tables/table-01-quarterly-sales.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "0af2af7426682c3afa522acc79d8e5d56fd79736c374890a81116f2c294451d9"
@@ -98,6 +159,7 @@
     {
       "path": "examples/tables/table-02-delivery-performance.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 2000,
       "sha256": "50010e5d1a14110d3154c9e16bb1eb1a438e24a465fef461a57013f5fafce6df"
@@ -105,6 +167,7 @@
     {
       "path": "examples/vision/vision-synthetic-cafe-relations.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 1000,
       "sha256": "cf129013053b8872cc015968c2c821a03986bad9a14247e96c72d604d5b967d5"
@@ -112,6 +175,7 @@
     {
       "path": "examples/vision/vision-synthetic-office-rich.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 1000,
       "sha256": "305fbc68085917c1182552eb34b44874b251a8bb18e8bf31c4450129aa027f82"
@@ -119,18 +183,14 @@
     {
       "path": "examples/vision/vision-synthetic-parking-spatial.png",
       "synthetic": true,
+      "generation": "programmatic",
       "width": 1600,
       "height": 1000,
       "sha256": "e1035fe2edbd23c78674050070db5b2aec1db477d9b6f2f9a918ff208fda521c"
     }
   ],
-  "preview": "PREVIEW-CONTACT-SHEET.png",
-  "external_real_world_assets": {
-    "count": 3,
-    "metadata": "EXTERNAL-ASSETS.json",
-    "download_script": "scripts/fetch_public_domain_vision_assets.sh",
-    "license_notes": "LICENSE-SOURCES.md"
-  },
+  "third_party_image_assets": 0,
   "case_catalog": "ground_truth/cases.json",
-  "static_verifier": "scripts/verify_asset_pack.py"
+  "static_verifier": "scripts/verify_asset_pack.py",
+  "preview": "PREVIEW-CONTACT-SHEET.png"
 }

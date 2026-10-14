@@ -1,26 +1,19 @@
 # Asset Sources and Licensing
 
-All PNG files included in this pack are synthetic benchmark assets created for this project.
+All image assets distributed with this repository are project-generated benchmark assets. No third-party web photograph is required by the release showcase.
 
-For the public showcase, fetch these three real-world assets using
-`scripts/fetch_public_domain_vision_assets.sh`:
+## AI-generated photorealistic assets
 
-1. **Hanoi street market**
-   - Source: https://commons.wikimedia.org/wiki/File:Street_market_-_Hanoi,_Vietnam_-_DSC03475.JPG
-   - Author: Daderot
-   - License: CC0 1.0
-   - Modification: none
+The six JPEG files under `examples/realistic/` were generated specifically for this project using OpenAI image generation, then resized to 1024×768 for reproducible Kaggle inference. They are synthetic benchmark images; they are not photographs downloaded from the web.
 
-2. **Kitchen table**
-   - Source: https://commons.wikimedia.org/wiki/File:Kitchen_table.jpg
-   - Author: Sundae2Sundae
-   - License: Public domain
-   - Modification: none
+The depicted organizations, names, addresses, identifiers, prices and event details are fictional benchmark content. No real trademark/logo is intentionally used.
 
-3. **Urban street market**
-   - Source: https://commons.wikimedia.org/wiki/File:People_on_street_market_in_urban_part_of_town.jpg
-   - Author: U.S. Fish and Wildlife Service
-   - License: Public domain
-   - Modification: none
+## Programmatically generated assets
 
-Retain these provenance notes in the public repository and re-check the source pages before release.
+The remaining benchmark PNG assets under `examples/` were generated specifically for this repository using drawing/chart code and fictional data.
+
+## Release policy
+
+- Do not add arbitrary Internet images to the release asset set.
+- If a future third-party asset is introduced, record its source URL, author, license, modifications and redistribution basis before commit.
+- Keep asset hashes in `ASSET_MANIFEST.json` so reviewer-visible inputs are reproducible.
