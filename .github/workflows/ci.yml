@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.lock.txt
+      - name: Install exact dependency set
+        run: |
+          python -m pip install --upgrade 'pip==26.2.1'
+          python -m pip install --requirement requirements.lock.txt
+          python -m pip install --no-deps -e .
+          python -m pip check
+      - name: Record dependency authority
+        run: |
+          python - <<'PY'
+          import importlib.metadata as m
+          expected = {
+              'accelerate': '1.15.0',
+              'fastapi': '0.143.0',
+              'httpx': '0.28.1',
+              'jsonschema': '4.26.0',
+              'Pillow': '12.3.0',
+              'python-multipart': '0.0.32',
+              'pytest': '9.1.1',
+              'torch': '2.14.1',
+              'transformers': '5.19.0',
+              'uvicorn': '0.54.0',
+          }
+          actual = {name: m.version(name) for name in expected}
+          assert actual == expected, (actual, expected)
+          print('DEPENDENCY_AUTHORITY=PASS', actual)
+          PY
+      - name: Unit and API-contract tests
+        run: pytest -q
+      - name: Python compile check
+        run: python -m compileall -q src scripts
+      - name: Asset static verification
+        run: python scripts/verify_asset_pack.py .
+      - name: Notebook static verification
+        run: python scripts/verify_notebook.py notebooks/kaggle-production-showcase.ipynb
+      - name: Repository governance and bilingual audit
+        run: python scripts/verify_repository.py
+      - name: Secret scan
+        run: python scripts/verify_no_secrets.py .
