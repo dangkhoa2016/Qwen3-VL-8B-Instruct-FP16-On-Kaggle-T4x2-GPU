@@ -69,7 +69,9 @@ def create_app(settings: Settings, runtime: Any | None = None) -> FastAPI:
     @app.middleware("http")
     async def collect_metrics(request, call_next):
         started = perf_counter()
-        metrics.begin(request.url.path)
+        track_metrics = request.url.path != "/v1/metrics"
+        if track_metrics:
+            metrics.begin(request.url.path)
         if requires_public_auth(request.headers.get("host"), settings):
             try:
                 verify_bearer_token(request.headers.get("authorization"), settings)
@@ -77,14 +79,17 @@ def create_app(settings: Settings, runtime: Any | None = None) -> FastAPI:
                 code = str(exc)
                 message = "Bearer API key is required" if code == "AUTH_REQUIRED" else "Bearer API key is invalid"
                 response = _error(401, code, message)
-                metrics.end(status_code=response.status_code, latency_ms=int(round((perf_counter() - started) * 1000)))
+                if track_metrics:
+                    metrics.end(status_code=response.status_code, latency_ms=int(round((perf_counter() - started) * 1000)))
                 return response
         try:
             response = await call_next(request)
         except Exception:
-            metrics.end(status_code=500, latency_ms=int(round((perf_counter() - started) * 1000)))
+            if track_metrics:
+                metrics.end(status_code=500, latency_ms=int(round((perf_counter() - started) * 1000)))
             raise
-        metrics.end(status_code=response.status_code, latency_ms=int(round((perf_counter() - started) * 1000)))
+        if track_metrics:
+            metrics.end(status_code=response.status_code, latency_ms=int(round((perf_counter() - started) * 1000)))
         return response
 
     def require_runtime() -> Any:

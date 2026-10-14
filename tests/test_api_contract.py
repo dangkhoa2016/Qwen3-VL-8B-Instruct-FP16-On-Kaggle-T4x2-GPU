@@ -124,13 +124,15 @@ def test_extract_returns_structured_output_invalid_for_bad_json(monkeypatch):
     assert response.json()["error"]["code"] == "STRUCTURED_OUTPUT_INVALID"
 
 
-def test_metrics_endpoint_exists():
+def test_metrics_endpoint_exists_without_counting_its_own_snapshot_request():
     from qwen3vl_t4x2.api import create_app
 
     client = TestClient(create_app(Settings.from_env(), runtime=FakeRuntime()))
     response = client.get("/v1/metrics")
     assert response.status_code == 200
-    assert response.json()["requests_total"] >= 1
+    assert response.json()["requests_total"] == 0
+    assert response.json()["requests_success"] == 0
+    assert "/v1/metrics" not in response.json()["by_endpoint"]
 
 
 def test_public_host_requires_bearer_when_tunnel_enabled(monkeypatch):
