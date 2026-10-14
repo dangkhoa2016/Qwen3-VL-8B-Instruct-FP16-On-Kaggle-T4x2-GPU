@@ -110,6 +110,31 @@
 - [ ] Execute representative cases and verify generated evidence.
 - [ ] Commit.
 
+## Implementation Status — 2026-10-14
+
+Completed and locally verified on Kaggle T4 x2:
+
+- [x] repository/bootstrap and deterministic asset pack;
+- [x] strict FP16/SDPA/balanced T4 x2 runtime loader with no-offload audit;
+- [x] text, multipart vision and generic schema-driven extraction pipelines;
+- [x] six specialized REST endpoints with serialized inference;
+- [x] localhost/public-host authentication boundary and tunnel fail-closed policy;
+- [x] metrics with internally consistent snapshots;
+- [x] machine-readable evidence runner and independent verifier;
+- [x] 19-case development showcase: 19/19 runtime PASS, 5/5 structured expected-field PASS after narrow typography normalization;
+- [x] 12-request sequential service stability: 12/12 PASS, zero allocated-memory growth on both GPUs;
+- [x] production-showcase notebook with one inference campaign and evidence rendering by capability;
+- [x] EN/VI architecture/API/Kaggle/security/benchmark documentation and GitHub CI/governance skeleton.
+
+Remaining before public v1.0.0:
+
+- [ ] promote the selected photorealistic AI-generated assets into the repository/Kaggle workspace and update the manifest/cases;
+- [ ] execute the final production-showcase notebook on the official Kaggle account and review every free-form semantic result;
+- [ ] promote reviewed official evidence to `benchmarks/official/`;
+- [ ] verify the authoritative upstream Qwen3-VL model license and finalize attribution wording;
+- [ ] push the local commit history to GitHub, observe public CI PASS, then finalize release metadata/tag `v1.0.0`.
+
+
 ### Task 8: Documentation/governance and final verification
 
 **Files:** Create `.github/`, EN/VI docs, `LICENSE`, `CITATION.cff`, `CHANGELOG*`, `README*`, lock file.
