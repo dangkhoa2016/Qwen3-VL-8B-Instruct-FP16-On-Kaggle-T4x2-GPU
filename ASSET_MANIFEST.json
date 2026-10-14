@@ -1,0 +1,136 @@
+{
+  "pack_name": "qwen3vl-kaggle-t4x2-showcase-assets",
+  "version": "0.1",
+  "generated_asset_count": 17,
+  "case_count": 22,
+  "generated_assets": [
+    {
+      "path": "examples/business-cards/business-card-01-orbital.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 900,
+      "sha256": "f159be4c2ffef6c2c3d64826eb73ed1dfa52b55867c98746dce1fe72c6cd0abd"
+    },
+    {
+      "path": "examples/charts/chart-01-support-tickets-bar.png",
+      "synthetic": true,
+      "width": 1530,
+      "height": 947,
+      "sha256": "7952ef17667fa64f583c0c99d25d9feeb37617b00909b4d58046d567e2725a8e"
+    },
+    {
+      "path": "examples/charts/chart-02-satisfaction-lines.png",
+      "synthetic": true,
+      "width": 1514,
+      "height": 947,
+      "sha256": "2449350c4aff0a7b7a69a4f759c440e3400037efbaf7c89c3d07799eceefaa5e"
+    },
+    {
+      "path": "examples/charts/chart-03-planned-vs-actual.png",
+      "synthetic": true,
+      "width": 1669,
+      "height": 947,
+      "sha256": "4991edc98486d86001cc9d461ee473d030b0439a65f15f3f39c1814336c50074"
+    },
+    {
+      "path": "examples/documents/document-01-transit-notice.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "914c1fb1ca9fb62b9572fad39acbe6f29c04cdcb884cfb037e99c229591df043"
+    },
+    {
+      "path": "examples/documents/document-02-warehouse-summary.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "258ff8be2b241819e027ab5ed8d4d64ad13daa4a807db693b45614bb35dc2637"
+    },
+    {
+      "path": "examples/forms/form-01-service-request.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "f8c06b690995078a5ec6d7d29c7380affccf4d894451e275f867bdf2e800a887"
+    },
+    {
+      "path": "examples/invoices/invoice-01-northstar.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "d6021b6d39ea0dba82729032f2a8dd685fc6ec023b7048b42d935f6025f1ad48"
+    },
+    {
+      "path": "examples/multilingual/multilingual-01-vietnamese-delivery-note.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "14211dca6b488f1737fb99f677ddde0a7eecdbd9081ba64608fc7fd734ad1f6c"
+    },
+    {
+      "path": "examples/multilingual/multilingual-02-en-vi-workshop.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "ed3ffda3bb28791ea40763b7a8e6f3e2b6e64f8fe868f985f3d962ae19c2def5"
+    },
+    {
+      "path": "examples/multilingual/multilingual-03-vietnamese-maintenance-notice.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "27b92811d82edcf0b0f9fd4f0aab32dd29a444f2c8a8a8687c225ba71f1d8306"
+    },
+    {
+      "path": "examples/receipts/receipt-01-sunrise-market.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "8f2ef855faacc7fa5afc82c5fbba03568b597c054ebf23b5065ce484d234d53a"
+    },
+    {
+      "path": "examples/tables/table-01-quarterly-sales.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "0af2af7426682c3afa522acc79d8e5d56fd79736c374890a81116f2c294451d9"
+    },
+    {
+      "path": "examples/tables/table-02-delivery-performance.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 2000,
+      "sha256": "50010e5d1a14110d3154c9e16bb1eb1a438e24a465fef461a57013f5fafce6df"
+    },
+    {
+      "path": "examples/vision/vision-synthetic-cafe-relations.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 1000,
+      "sha256": "cf129013053b8872cc015968c2c821a03986bad9a14247e96c72d604d5b967d5"
+    },
+    {
+      "path": "examples/vision/vision-synthetic-office-rich.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 1000,
+      "sha256": "305fbc68085917c1182552eb34b44874b251a8bb18e8bf31c4450129aa027f82"
+    },
+    {
+      "path": "examples/vision/vision-synthetic-parking-spatial.png",
+      "synthetic": true,
+      "width": 1600,
+      "height": 1000,
+      "sha256": "e1035fe2edbd23c78674050070db5b2aec1db477d9b6f2f9a918ff208fda521c"
+    }
+  ],
+  "preview": "PREVIEW-CONTACT-SHEET.png",
+  "external_real_world_assets": {
+    "count": 3,
+    "metadata": "EXTERNAL-ASSETS.json",
+    "download_script": "scripts/fetch_public_domain_vision_assets.sh",
+    "license_notes": "LICENSE-SOURCES.md"
+  },
+  "case_catalog": "ground_truth/cases.json",
+  "static_verifier": "scripts/verify_asset_pack.py"
+}

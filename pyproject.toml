@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qwen3vl-t4x2"
+version = "0.1.0"
+description = "Qwen3-VL-8B-Instruct FP16 production-style Kaggle T4x2 showcase"
+requires-python = ">=3.11"
+dependencies = [
+  "accelerate",
+  "fastapi",
+  "httpx",
+  "jsonschema",
+  "pillow",
+  "python-multipart",
+  "torch",
+  "transformers",
+  "uvicorn",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

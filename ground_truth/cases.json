@@ -1,0 +1,403 @@
+[
+  {
+    "case_id": "vision-office-rich-01",
+    "group": "general_vision",
+    "asset": "examples/vision/vision-synthetic-office-rich.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Describe the scene precisely. List the major objects, their relationships, and one detail you are uncertain about.",
+    "expected": {
+      "must_notice": [
+        "desk",
+        "laptop",
+        "mug",
+        "notebook",
+        "pen",
+        "plant",
+        "window",
+        "clock"
+      ],
+      "relations": [
+        "mug left of laptop",
+        "notebook right of laptop",
+        "plant behind/right of desk"
+      ]
+    }
+  },
+  {
+    "case_id": "vision-parking-spatial-01",
+    "group": "general_vision",
+    "asset": "examples/vision/vision-synthetic-parking-spatial.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Which labeled cars are in the upper row? Which labeled car is farthest to the right? Describe the cones relative to the central road.",
+    "expected": {
+      "upper_row": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightmost": "E",
+      "cones": "near the center road"
+    }
+  },
+  {
+    "case_id": "vision-cafe-relations-01",
+    "group": "general_vision",
+    "asset": "examples/vision/vision-synthetic-cafe-relations.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Identify the relationships among the people, tables, blue bag, laptop, dog and order counter.",
+    "expected": {
+      "must_notice": [
+        "T1",
+        "T2",
+        "T3",
+        "blue bag",
+        "laptop",
+        "dog",
+        "ORDER counter"
+      ]
+    }
+  },
+  {
+    "case_id": "invoice-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/invoices/invoice-01-northstar.png",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "invoice_number": "string",
+      "date": "string",
+      "vendor": "string",
+      "bill_to": "string",
+      "reference": "string",
+      "items": [
+        {
+          "name": "string",
+          "quantity": "number",
+          "unit_price": "number",
+          "line_total": "number"
+        }
+      ],
+      "subtotal": "number",
+      "tax": "number",
+      "total": "number"
+    },
+    "expected": {
+      "invoice_number": "INV-2026-1042",
+      "date": "2026-10-09",
+      "vendor": "NORTHSTAR OFFICE SUPPLY",
+      "bill_to": "Riverstone Analytics Ltd.",
+      "reference": "PO-RSA-8841",
+      "subtotal": 866.0,
+      "tax": 69.28,
+      "total": 935.28
+    }
+  },
+  {
+    "case_id": "receipt-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/receipts/receipt-01-sunrise-market.png",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "merchant": "string",
+      "date": "string",
+      "time": "string",
+      "receipt_number": "string",
+      "items": [
+        {
+          "name": "string",
+          "quantity": "number",
+          "unit_price": "number",
+          "line_total": "number"
+        }
+      ],
+      "subtotal": "number",
+      "tax": "number",
+      "total": "number",
+      "payment_method": "string",
+      "cashier": "string"
+    },
+    "expected": {
+      "merchant": "SUNRISE MARKET",
+      "date": "2026-10-11",
+      "time": "18:42",
+      "receipt_number": "SM-77192",
+      "subtotal": 29.6,
+      "tax": 2.37,
+      "total": 31.97,
+      "payment_method": "VISA •••• 4242",
+      "cashier": "Linh"
+    }
+  },
+  {
+    "case_id": "business-card-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/business-cards/business-card-01-orbital.png",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "name": "string",
+      "title": "string",
+      "company": "string",
+      "email": "string",
+      "phone": "string",
+      "website": "string",
+      "address": "string"
+    },
+    "expected": {
+      "name": "Maya Chen",
+      "title": "Director of Applied AI",
+      "company": "ORBITAL DATA LABS",
+      "email": "maya.chen@orbitaldata.example",
+      "phone": "+1 415 555 0188",
+      "website": "www.orbitaldata.example",
+      "address": "245 Mission Street, San Francisco, CA 94105"
+    }
+  },
+  {
+    "case_id": "form-extract-01",
+    "group": "structured_extraction",
+    "asset": "examples/forms/form-01-service-request.png",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "request_id": "string",
+      "submitted_by": "string",
+      "department": "string",
+      "equipment": "string",
+      "asset_tag": "string",
+      "priority": "string",
+      "requested_date": "string",
+      "problem_description": "string",
+      "preferred_service_window": "string"
+    },
+    "expected": {
+      "request_id": "SR-20418",
+      "submitted_by": "Anita Patel",
+      "department": "Operations",
+      "equipment": "Laser Printer LP-320",
+      "asset_tag": "OPS-PR-044",
+      "priority": "High",
+      "requested_date": "2026-10-12",
+      "preferred_service_window": "2026-10-14, 09:00–12:00"
+    }
+  },
+  {
+    "case_id": "document-transit-qa-01",
+    "group": "ocr_document",
+    "asset": "examples/documents/document-01-transit-notice.png",
+    "endpoint": "/v1/vision",
+    "prompt": "What is changing, on which dates, which stops are affected, and what alternative is provided for Central Library passengers?",
+    "expected": {
+      "dates": "17–19 October 2026",
+      "not_served": [
+        "Central Library",
+        "Pine Street"
+      ],
+      "alternative": "temporary stop on Oak Avenue about 180 metres east",
+      "resume": "20 October 2026"
+    }
+  },
+  {
+    "case_id": "document-warehouse-qa-01",
+    "group": "ocr_document",
+    "asset": "examples/documents/document-02-warehouse-summary.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Summarize the operational issue, identify which zone is below plan, and state the supervisor's action for tomorrow.",
+    "expected": {
+      "dock_issue": "Dock 3 closed 14:00–15:30",
+      "below_plan": "South",
+      "variance": -5,
+      "action": "Prioritize the South zone backlog during the first shift tomorrow"
+    }
+  },
+  {
+    "case_id": "table-sales-01",
+    "group": "tables_charts",
+    "asset": "examples/tables/table-01-quarterly-sales.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Which region has the highest Q4 value? Which region increased the most from Q1 to Q4? Give the numeric differences.",
+    "expected": {
+      "highest_q4": {
+        "region": "North",
+        "value": 162
+      },
+      "largest_increase": {
+        "region": "North",
+        "difference": 42
+      }
+    }
+  },
+  {
+    "case_id": "table-delivery-01",
+    "group": "tables_charts",
+    "asset": "examples/tables/table-02-delivery-performance.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Which carrier has the best on-time percentage? Which has the highest volume? Which carrier appears least reliable when considering on-time %, delay and claims together?",
+    "expected": {
+      "best_ontime": "Cobalt",
+      "highest_volume": "Cobalt",
+      "least_reliable": "BlueJet"
+    }
+  },
+  {
+    "case_id": "chart-tickets-01",
+    "group": "tables_charts",
+    "asset": "examples/charts/chart-01-support-tickets-bar.png",
+    "endpoint": "/v1/vision",
+    "prompt": "What month has the highest ticket count? What is the largest month-to-month increase?",
+    "expected": {
+      "highest": {
+        "month": "May",
+        "value": 117
+      },
+      "largest_increase": {
+        "from": "Mar",
+        "to": "Apr",
+        "difference": 16
+      }
+    }
+  },
+  {
+    "case_id": "chart-satisfaction-01",
+    "group": "tables_charts",
+    "asset": "examples/charts/chart-02-satisfaction-lines.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Which product finishes higher at W8? At which week does Product A first exceed Product B?",
+    "expected": {
+      "higher_at_w8": "Product A",
+      "first_a_exceeds_b": "W4"
+    }
+  },
+  {
+    "case_id": "chart-plan-actual-01",
+    "group": "tables_charts",
+    "asset": "examples/charts/chart-03-planned-vs-actual.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Which category exceeds plan by the largest amount, and which category misses plan by the largest amount?",
+    "expected": {
+      "largest_over": {
+        "category": "Delta",
+        "difference": 11
+      },
+      "largest_under": {
+        "category": "Gamma",
+        "difference": 8
+      }
+    }
+  },
+  {
+    "case_id": "vi-delivery-extract-01",
+    "group": "multilingual",
+    "asset": "examples/multilingual/multilingual-01-vietnamese-delivery-note.png",
+    "endpoint": "/v1/extract",
+    "schema": {
+      "ma_phieu": "string",
+      "ngay": "string",
+      "khach_hang": "string",
+      "dia_chi_giao": "string",
+      "tong_cong": "string",
+      "ghi_chu": "string"
+    },
+    "expected": {
+      "ma_phieu": "GH-260913",
+      "ngay": "13/10/2026",
+      "khach_hang": "Công ty An Phúc",
+      "dia_chi_giao": "18 Nguyễn Trãi, Nha Trang",
+      "tong_cong": "3.045.000 đ",
+      "ghi_chu": "Giao trước 16:00, kiểm tra đủ số lượng khi nhận."
+    }
+  },
+  {
+    "case_id": "mixed-workshop-qa-01",
+    "group": "multilingual",
+    "asset": "examples/multilingual/multilingual-02-en-vi-workshop.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Trả lời bằng tiếng Việt: hội thảo nói về chủ đề gì, diễn ra khi nào, ở đâu, ai là diễn giả và hạn đăng ký là ngày nào?",
+    "expected": {
+      "topic": "Practical Multimodal AI / AI đa phương thức thực tiễn",
+      "date": "18 October 2026",
+      "time": "09:30–11:30",
+      "venue": "Room B204 / Phòng B204",
+      "speaker": "Dr. Lan Nguyễn — Vision Systems Lead",
+      "deadline": "16 October 2026"
+    }
+  },
+  {
+    "case_id": "vi-notice-en-question-01",
+    "group": "multilingual",
+    "asset": "examples/multilingual/multilingual-03-vietnamese-maintenance-notice.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Answer in English: when is the maintenance window, what actions are unavailable, and what remains available?",
+    "expected": {
+      "window": "22:00 2026-10-15 to 01:30 2026-10-16",
+      "unavailable": "create or edit new orders",
+      "available": "view previously downloaded reports"
+    }
+  },
+  {
+    "case_id": "invoice-understanding-01",
+    "group": "ocr_document",
+    "asset": "examples/invoices/invoice-01-northstar.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Identify the document type, explain who is billing whom, list the three purchased items, and verify whether subtotal plus tax equals the total.",
+    "expected": {
+      "document_type": "invoice",
+      "vendor": "NORTHSTAR OFFICE SUPPLY",
+      "customer": "Riverstone Analytics Ltd.",
+      "items": [
+        "Ergonomic keyboard",
+        "USB-C dock",
+        "27-inch monitor"
+      ],
+      "arithmetic": "866.00 + 69.28 = 935.28"
+    }
+  },
+  {
+    "case_id": "receipt-understanding-01",
+    "group": "ocr_document",
+    "asset": "examples/receipts/receipt-01-sunrise-market.png",
+    "endpoint": "/v1/vision",
+    "prompt": "Identify the document type, merchant, payment method, most expensive line item by line total, and verify the displayed total.",
+    "expected": {
+      "document_type": "receipt",
+      "merchant": "SUNRISE MARKET",
+      "payment_method": "VISA •••• 4242",
+      "most_expensive_line_item": "Arabica coffee 500g",
+      "total": "31.97"
+    }
+  },
+  {
+    "case_id": "vision-real-kitchen-01",
+    "group": "general_vision",
+    "asset": "examples/vision/vision-real-kitchen-table-public-domain.jpg",
+    "endpoint": "/v1/vision",
+    "requires_fetch": true,
+    "prompt": "Describe the room and furniture. Count the clearly visible wooden dining chairs around the table, and distinguish them from the dark padded chair.",
+    "expected": {
+      "scene": "indoor dining/kitchen area with a wooden table by a window",
+      "wooden_dining_chairs": "multiple; reviewer should verify exact count against fetched source",
+      "dark_padded_chair": "separate chair to the left"
+    }
+  },
+  {
+    "case_id": "vision-real-hanoi-market-01",
+    "group": "general_vision",
+    "asset": "examples/vision/vision-real-hanoi-street-market-cc0.jpg",
+    "endpoint": "/v1/vision",
+    "requires_fetch": true,
+    "prompt": "Describe the street-market scene, identify visible people and market activity, and mention any culturally distinctive visible clothing or headwear without guessing identities.",
+    "expected": {
+      "scene": "street market in Hanoi, Vietnam",
+      "validation": "qualitative reviewer check; do not infer identities"
+    }
+  },
+  {
+    "case_id": "vision-real-urban-market-01",
+    "group": "general_vision_optional",
+    "asset": "examples/vision/vision-real-urban-market-public-domain.jpg",
+    "endpoint": "/v1/vision",
+    "requires_fetch": true,
+    "prompt": "Describe the pedestrian market scene and explain the spatial relationship among the walking people, vendor display, buildings and vegetation.",
+    "expected": {
+      "scene": "outdoor pedestrian market/street scene",
+      "validation": "qualitative reviewer check"
+    }
+  }
+]

@@ -1,0 +1,11 @@
+.worktrees/
+.superpowers/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+results/*.jsonl
+results/*.json
+server.log
+*.pid
