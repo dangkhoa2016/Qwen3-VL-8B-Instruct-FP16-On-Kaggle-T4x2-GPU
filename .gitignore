@@ -9,3 +9,6 @@ results/*.jsonl
 results/*.json
 server.log
 *.pid
+
+results/**
+!results/.gitkeep

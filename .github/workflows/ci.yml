@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install
+        run: python -m pip install --upgrade pip && python -m pip install -e '.[dev]'
+      - name: Unit and API-contract tests
+        run: pytest -q
+      - name: Python compile check
+        run: python -m compileall -q src scripts
+      - name: Asset static verification
+        run: python scripts/verify_asset_pack.py .
+      - name: Notebook static verification
+        run: python scripts/verify_notebook.py notebooks/kaggle-production-showcase.ipynb
