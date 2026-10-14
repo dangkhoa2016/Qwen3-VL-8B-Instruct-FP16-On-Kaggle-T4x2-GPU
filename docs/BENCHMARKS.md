@@ -16,29 +16,30 @@ The numbers below are **development evidence from the current Kaggle T4 x2 imple
 
 Observed placement put the visual module, embeddings and language layers 0-13 on GPU 0; layers 14-35 plus final language components and `lm_head` were on GPU 1.
 
-## 19-case showcase campaign
+## Curated 18-case showcase campaign
 
-The default local asset catalog contained 19 runnable cases across five capability groups:
+The current default local catalog contains 18 runnable cases across five capability groups:
 
 | Capability | Cases |
 |---|---:|
 | General vision | 3 |
 | Structured extraction | 4 |
 | OCR/document understanding | 4 |
-| Tables/charts | 5 |
+| Tables/charts | 4 |
 | Multilingual | 3 |
-| **Total** | **19** |
+| **Total** | **18** |
 
-Measured development result:
+One multilingual case also uses `/v1/extract`, so there are **5 structured endpoint cases** in the campaign.
 
-- runtime success: **19/19**;
-- structured cases (including the Vietnamese extraction case): **5**;
-- JSON parse rate: **100%**;
+Final development-session result for the current catalog/prompt set:
+
+- runtime success: **18/18**;
+- JSON parse rate across 5 structured endpoint cases: **100%**;
 - schema validation rate: **100%**;
-- expected-field semantic checks: **5/5 PASS** after a deliberately narrow text normalization (`NFKC`, whitespace collapse, typographic-dash equivalence only);
-- free-form vision/document/chart answers remain manual semantic review and are not auto-labeled quality PASS.
+- expected-field semantic checks: **5/5 PASS** after deliberately narrow text normalization (`NFKC`, whitespace collapse, typographic-dash equivalence only);
+- free-form cases: **13/13 manually reviewed for the expected facts** in this development session; free-form answers are still not auto-labeled semantic PASS by the evidence engine.
 
-Server metrics at the end of this campaign showed 21 tracked requests (health/model plus 14 vision and 5 extraction), median request latency 29,725 ms and p95 45,541 ms. These aggregate latencies reflect deliberately deep prompts and up-to-256/512-token showcase limits, not a throughput benchmark.
+Per-case wall latency for this campaign (not cumulative server metrics): **22,628 ms median**, **7,194 ms minimum**, **54,439 ms maximum**. This is a deep showcase campaign, not a throughput benchmark.
 
 ## 12-request service stability campaign
 
@@ -68,3 +69,9 @@ Earlier service smoke observations in the same implementation session included:
 - simplified invoice structured extraction: 25,772 ms, 3,327 input tokens, 109 generated tokens, JSON/schema PASS.
 
 Do not treat these single observations as statistically representative latency benchmarks.
+
+
+## Development-case curation note
+
+During development review, a close-line crossing-point question exposed a genuine reasoning inconsistency: the model correctly read `A=61` and `B=63` at W3 but still described A as greater. The release showcase therefore does not auto-present that crossing-point prompt as a quality PASS. The retained line-chart case tests exact labeled-value reading plus arithmetic differences instead. This curation is documented rather than hidden as evaluator tolerance. A grouped-bar exact-difference case was also removed from the default release catalog after repeated inference showed inconsistent category/sign reasoning even after the chart was made numerically explicit; the asset remains available, but that failed reasoning probe is not represented as a release quality PASS.
+

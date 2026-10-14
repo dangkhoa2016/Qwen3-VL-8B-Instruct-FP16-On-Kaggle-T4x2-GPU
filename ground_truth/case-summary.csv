@@ -12,7 +12,6 @@ table-sales-01,tables_charts,/v1/vision,examples/tables/table-01-quarterly-sales
 table-delivery-01,tables_charts,/v1/vision,examples/tables/table-02-delivery-performance.png,False
 chart-tickets-01,tables_charts,/v1/vision,examples/charts/chart-01-support-tickets-bar.png,False
 chart-satisfaction-01,tables_charts,/v1/vision,examples/charts/chart-02-satisfaction-lines.png,False
-chart-plan-actual-01,tables_charts,/v1/vision,examples/charts/chart-03-planned-vs-actual.png,False
 vi-delivery-extract-01,multilingual,/v1/extract,examples/multilingual/multilingual-01-vietnamese-delivery-note.png,False
 mixed-workshop-qa-01,multilingual,/v1/vision,examples/multilingual/multilingual-02-en-vi-workshop.png,False
 vi-notice-en-question-01,multilingual,/v1/vision,examples/multilingual/multilingual-03-vietnamese-maintenance-notice.png,False

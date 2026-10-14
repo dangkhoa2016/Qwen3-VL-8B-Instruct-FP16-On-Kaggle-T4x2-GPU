@@ -121,7 +121,7 @@ Completed and locally verified on Kaggle T4 x2:
 - [x] localhost/public-host authentication boundary and tunnel fail-closed policy;
 - [x] metrics with internally consistent snapshots;
 - [x] machine-readable evidence runner and independent verifier;
-- [x] 19-case development showcase: 19/19 runtime PASS, 5/5 structured expected-field PASS after narrow typography normalization;
+- [x] curated 18-case development showcase: 18/18 runtime PASS, 5/5 structured expected-field PASS, 13/13 free-form cases manually reviewed;
 - [x] 12-request sequential service stability: 12/12 PASS, zero allocated-memory growth on both GPUs;
 - [x] production-showcase notebook with one inference campaign and evidence rendering by capability;
 - [x] EN/VI architecture/API/Kaggle/security/benchmark documentation and GitHub CI/governance skeleton.

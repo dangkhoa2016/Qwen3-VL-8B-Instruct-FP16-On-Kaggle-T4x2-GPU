@@ -2,7 +2,7 @@
   "pack_name": "qwen3vl-kaggle-t4x2-showcase-assets",
   "version": "0.1",
   "generated_asset_count": 17,
-  "case_count": 22,
+  "case_count": 21,
   "generated_assets": [
     {
       "path": "examples/business-cards/business-card-01-orbital.png",
@@ -21,16 +21,16 @@
     {
       "path": "examples/charts/chart-02-satisfaction-lines.png",
       "synthetic": true,
-      "width": 1514,
+      "width": 1653,
       "height": 947,
-      "sha256": "2449350c4aff0a7b7a69a4f759c440e3400037efbaf7c89c3d07799eceefaa5e"
+      "sha256": "e04dce6177c5f0c6ee5104f05c0c5f339fdded56bbf303afa85ec4b03c8d8b8d"
     },
     {
       "path": "examples/charts/chart-03-planned-vs-actual.png",
       "synthetic": true,
       "width": 1669,
       "height": 947,
-      "sha256": "4991edc98486d86001cc9d461ee473d030b0439a65f15f3f39c1814336c50074"
+      "sha256": "99cb8fe04dd387d977d9f13bbea1e560496497b8df7e64ae2effd3378e1ed2e6"
     },
     {
       "path": "examples/documents/document-01-transit-notice.png",
