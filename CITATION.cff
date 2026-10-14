@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it."
+title: "Qwen3-VL-8B-Instruct FP16 on Kaggle T4x2 GPU"
+type: software
+authors:
+  - given-names: "Đăng Khoa"
+    email: "i.am@dangkhoa.dev"
+repository-code: "https://github.com/dangkhoa2016/Qwen3-VL-8B-Instruct-FP16-On-Kaggle-T4x2-GPU"
+license: MIT
+version: 0.1.0
+date-released: 2026-10-14
