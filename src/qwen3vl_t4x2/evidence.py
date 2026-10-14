@@ -1,6 +1,16 @@
 from __future__ import annotations
 
 from typing import Any
+import re
+import unicodedata
+
+
+_DASH_TRANSLATION = str.maketrans({"–": "-", "—": "-", "−": "-", "‑": "-"})
+
+
+def _normalize_text(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value).translate(_DASH_TRANSLATION)
+    return re.sub(r"\s+", " ", normalized).strip()
 
 
 def _subset_mismatches(expected: Any, actual: Any, path: str = "") -> list[str]:
@@ -25,6 +35,11 @@ def _subset_mismatches(expected: Any, actual: Any, path: str = "") -> list[str]:
 
     if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
         if abs(float(expected) - float(actual)) > 1e-6:
+            mismatches.append(f"{path}: expected {expected!r}, got {actual!r}")
+        return mismatches
+
+    if isinstance(expected, str) and isinstance(actual, str):
+        if _normalize_text(expected) != _normalize_text(actual):
             mismatches.append(f"{path}: expected {expected!r}, got {actual!r}")
         return mismatches
 

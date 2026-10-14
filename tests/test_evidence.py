@@ -69,3 +69,21 @@ def test_summary_keeps_runtime_and_semantic_counts_separate():
     assert summary["semantic_auto_pass"] == 1
     assert summary["structured_parse_rate"] == 0.5
     assert summary["structured_schema_valid_rate"] == 0.5
+
+
+def test_expected_subset_treats_typographic_dash_variants_as_equivalent():
+    case = {
+        "case_id": "form-01",
+        "endpoint": "/v1/extract",
+        "expected": {"window": "2026-10-14, 09:00–12:00"},
+    }
+    response = {
+        "success": True,
+        "data": {"window": "2026-10-14, 09:00-12:00"},
+        "meta": {"json_parse": True, "schema_valid": True},
+    }
+
+    record = evaluate_case(case, 200, response)
+
+    assert record["semantic_validation"]["pass"] is True
+    assert record["semantic_validation"]["mismatches"] == []
