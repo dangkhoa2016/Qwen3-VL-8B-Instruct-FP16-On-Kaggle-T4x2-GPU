@@ -131,7 +131,7 @@ Remaining before public v1.0.0:
 - [ ] promote the selected photorealistic AI-generated assets into the repository/Kaggle workspace and update the manifest/cases;
 - [ ] execute the final production-showcase notebook on the official Kaggle account and review every free-form semantic result;
 - [ ] promote reviewed official evidence to `benchmarks/official/`;
-- [ ] verify the authoritative upstream Qwen3-VL model license and finalize attribution wording;
+- [x] verify the authoritative upstream Qwen3-VL model license and finalize attribution wording (Apache-2.0 upstream; verified 2026-10-14);
 - [ ] push the local commit history to GitHub, observe public CI PASS, then finalize release metadata/tag `v1.0.0`.
 
 

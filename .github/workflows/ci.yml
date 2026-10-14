@@ -26,3 +26,5 @@ jobs:
         run: python scripts/verify_asset_pack.py .
       - name: Notebook static verification
         run: python scripts/verify_notebook.py notebooks/kaggle-production-showcase.ipynb
+      - name: Secret scan
+        run: python scripts/verify_no_secrets.py
